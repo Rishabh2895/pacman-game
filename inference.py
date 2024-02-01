@@ -179,7 +179,7 @@ class InferenceModule:
         "*** CS5368 YOUR CODE HERE ***"
         #raiseNotDefined()
 
-        #determining if the ghost position corresponds to the prison position or not and the distance from the noise if not.
+        #checking if ghoust position is same as jail position or not and noisy distance in ineer if else.
         if ghostPosition == jailPosition:
             if noisyDistance != None:
                 return 0
@@ -322,7 +322,7 @@ class ExactInference(InferenceModule):
         "*** CS5368 YOUR CODE HERE ***"
         #raiseNotDefined()
 
-        #determining the distribution from the function
+        #calculating distribution from function
         distribution = DiscreteDistribution()
 
         for oldPos in self.allPositions:
@@ -395,12 +395,12 @@ class ParticleFilter(InferenceModule):
        
         var = True
 
-        #changing var's value according to the distribution value
+        #updating valur of var as per distribution value
         for v in distribution.values():
             if v != 0:
                 var = False
         
-        #in the case of the var variable
+        #condition on var variable
         if var:
             self.initializeUniformly(gameState)
         else:
@@ -416,7 +416,7 @@ class ParticleFilter(InferenceModule):
 
         arr = []
 
-        #adding the array's position values
+        #appending the values of position in array
         for index,old_pos in enumerate(self.particles):
             arr.append(self.getPositionDistribution(gameState, old_pos).sample())
         self.particles = arr

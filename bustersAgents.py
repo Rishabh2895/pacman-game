@@ -144,11 +144,11 @@ class GreedyBustersAgent(BustersAgent):
             [beliefs for i, beliefs in enumerate(self.ghostBeliefs)
              if livingGhosts[i+1]]
         "*** CS5368 YOUR CODE HERE ***"
-        #Initializing distance as unlimited in order to compare it to the distances in Pac Man and Ghost
+        #Initializing distance as infinite to compare it with pacman and ghost distance
         dist1 = float("inf")
         ghost_position = None
 
-        #setting up a for loop to update the position of the ghost
+        #Initializing for loop to update ghost position
         for distribution in livingGhostPositionDistributions:
             tempGhostPos = distribution.argMax()
             temp_distance = self.distancer.getDistance(pacmanPosition, tempGhostPos)
@@ -158,7 +158,7 @@ class GreedyBustersAgent(BustersAgent):
         dist2 = float("inf")
         action = None
 
-        #setting up the for loop to update the action
+        #Initializing for loop to update action
         for a in legal:
             successorPos = Actions.getSuccessor(pacmanPosition, a)
             ghostDis = self.distancer.getDistance(successorPos, ghost_position)
